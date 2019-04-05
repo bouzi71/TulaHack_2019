@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SpaceObject : MonoBehaviour
 {
-    public const float G = 1; // 6.67 * 10^(-11) [(Н * м^2) / (кг^2)]
+    public static float G = 6.67f * Mathf.Pow(10, -11);//[(Н * м^2) / (кг^2)]
+    public const float min_rad = 0.00001f;
 
     [SerializeField]
     public float mass; //[кг]
@@ -21,9 +22,11 @@ public class SpaceObject : MonoBehaviour
 
     private void Awake()
     {
-        Gm = G * mass;
+        G_mass_override(G * mass);
     }
 
+
+    #region Position events
     /// <summary>
     /// при установке сразу изменяет вектор скорости (предопеределен Controller.step_time)
     /// </summary>
@@ -39,7 +42,6 @@ public class SpaceObject : MonoBehaviour
             v += a * Controller.step_time;
         }
     }
-
     /// <summary>
     /// Устанавливает координату (предопеределен Controller.step_time)
     /// </summary>
@@ -47,15 +49,21 @@ public class SpaceObject : MonoBehaviour
     {
         transform.position += v * Controller.step_time;
     }
+    #endregion
 
-
-    private void OnCollisionEnter(Collision collision)
+    #region Mass
+    private void G_mass_override(float G_mass)
     {
-        Debug.Log(string.Format("Collision [{0}]", gameObject.name));
+        Gm += G_mass;
     }
+    #endregion
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        //id triger?
+        if ((other.transform.position - transform.position).magnitude > min_rad) return;
+
+
         Debug.Log(string.Format("Trigger [{0}]", gameObject.name));
     }
 }

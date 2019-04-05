@@ -11,9 +11,8 @@ public class Controller : MonoBehaviour
 
     public const float step_time = 0.02f;
 
-    public float G;
     [SerializeField]
-    private SpaceObject[] spaceObjects;
+    public List<SpaceObject> spaceObjects;
 
 
     // Start is called before the first frame update
@@ -37,7 +36,7 @@ public class Controller : MonoBehaviour
                 if (pow_2_rad <= 0.00001) pow_2_rad = 0.00001f;
                 //Упростить расчетом Vector3 =  (G*d_rad_A) / pow_2_rad;
 
-                objectA.Acceleration = (G*objectB.mass / pow_2_rad) * d_rad_A.normalized;//Вектор ускорения [a] = (G*mass другого объекта / радиус квадрат)* единичное направление вектора
+                objectA.Acceleration = (objectB.Gm / pow_2_rad) * d_rad_A.normalized;//Вектор ускорения [a] = (G*mass другого объекта / радиус квадрат)* единичное направление вектора
                 //objectB.Acceleration = -1 * (G*objectA.mass / pow_2_rad+0.01f) * d_rad_A.normalized;//Вектор ускорение [a] другого объекта (-1 определяет противоположное направление радиус вектора
             }
         }
