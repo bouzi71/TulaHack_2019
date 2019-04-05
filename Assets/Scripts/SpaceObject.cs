@@ -48,4 +48,14 @@ public class SpaceObject : MonoBehaviour
         transform.position += v * Controller.step_time;
     }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log(string.Format("Collision [{0}]", gameObject.name));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(string.Format("Trigger [{0}]", gameObject.name));
+    }
 }
