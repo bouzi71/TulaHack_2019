@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpaceObject : MonoBehaviour
 {
     public static float G = 6.67f * Mathf.Pow(10, -11);//[(Н * м^2) / (кг^2)]
-    public const float min_rad = 0.00001f;
+    public const float min_rad = 0.01f;
 
     [SerializeField]
     public float mass; //[кг]
@@ -58,12 +58,33 @@ public class SpaceObject : MonoBehaviour
     }
     #endregion
 
+    //private void OnTriggerEnter(Collider other)
+    //{
+        
+    //}
+
     private void OnTriggerStay(Collider other)
     {
         //id triger?
         if ((other.transform.position - transform.position).magnitude > min_rad) return;
 
+        var other_SpObj = other.GetComponent<SpaceObject>();
+        if (other_SpObj.Gm > Gm)
+        {
+            Destroy(gameObject, Controller.step_time);
+            Controller.Instance.spaceObjects.Remove(this);
+            return;
+        }
+        else
+        {
+            G_mass_override(other_SpObj.Gm);
+        }
 
         Debug.Log(string.Format("Trigger [{0}]", gameObject.name));
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+        
+    //}
 }

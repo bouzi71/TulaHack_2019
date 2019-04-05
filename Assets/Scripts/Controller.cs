@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public static Controller Instance;
     //[SerializeField]
     //private Transform space;
     ////var object1 = Instantiate(Resources.Load("SpaceObjects/Object1", typeof(GameObject)), space) as GameObject;
@@ -11,12 +12,15 @@ public class Controller : MonoBehaviour
 
     public const float step_time = 0.02f;
 
-    [SerializeField]
     public List<SpaceObject> spaceObjects;
 
 
     // Start is called before the first frame update
-    
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
         InvokeRepeating("Step", 0, step_time);   
@@ -33,7 +37,7 @@ public class Controller : MonoBehaviour
                 Vector3 d_rad_A = objectB.transform.position - objectA.transform.position;//Радиус вектор для объект_А в точку объект_B
                 float pow_2_rad = Mathf.Pow(d_rad_A.magnitude, 2);//квадрат расстояния между точками
 
-                if (pow_2_rad <= 0.00001) pow_2_rad = 0.00001f;
+                if (pow_2_rad <= SpaceObject.min_rad) pow_2_rad = SpaceObject.min_rad;
                 //Упростить расчетом Vector3 =  (G*d_rad_A) / pow_2_rad;
 
                 objectA.Acceleration = (objectB.Gm / pow_2_rad) * d_rad_A.normalized;//Вектор ускорения [a] = (G*mass другого объекта / радиус квадрат)* единичное направление вектора
