@@ -2,50 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+namespace Objects.Control
 {
-    public static Controller Instance;
-    //[SerializeField]
-    //private Transform space;
-    ////var object1 = Instantiate(Resources.Load("SpaceObjects/Object1", typeof(GameObject)), space) as GameObject;
-
-
-    public const float step_time = 0.02f;
-
-    public List<SpaceObject> spaceObjects;
-
-
-    // Start is called before the first frame update
-    private void Awake()
+    public class Controller : MonoBehaviour
     {
-        Instance = this;
-    }
+        public static Controller Instance;
 
-    void Start()
-    {
-        InvokeRepeating("Step", 0, step_time);   
-    }
+        public const float step_time = 0.1f;
 
-    private void Step()
-    {
-        foreach (var objectA in spaceObjects)
+        public List<Data.SpaceObject> spaceObjects;
+
+
+        // Start is called before the first frame update
+        private void Awake()
         {
-            foreach (var objectB in spaceObjects)
-            {
-                if (objectB == objectA) continue;
-
-                Vector3 d_rad_A = objectB.transform.position - objectA.transform.position;//Радиус вектор для объект_А в точку объект_B
-                float pow_2_rad = Mathf.Pow(d_rad_A.magnitude, 2);//квадрат расстояния между точками
-
-                if (pow_2_rad <= SpaceObject.min_rad) pow_2_rad = SpaceObject.min_rad;
-                //Упростить расчетом Vector3 =  (G*d_rad_A) / pow_2_rad;
-
-                objectA.Acceleration = (objectB.Gm / pow_2_rad) * d_rad_A.normalized;//Вектор ускорения [a] = (G*mass другого объекта / радиус квадрат)* единичное направление вектора
-                //objectB.Acceleration = -1 * (G*objectA.mass / pow_2_rad+0.01f) * d_rad_A.normalized;//Вектор ускорение [a] другого объекта (-1 определяет противоположное направление радиус вектора
-            }
+            Time.timeScale = 5;
+            Instance = this;
         }
 
-        foreach (var obj in spaceObjects)
-            obj.Positionize();
+        void Start()
+        {
+            InvokeRepeating("Step", step_time, step_time);
+        }
+
+        private void Step()
+        {
+            foreach (var objectA in spaceObjects)
+            {
+                foreach (var objectB in spaceObjects)
+                {
+                    if (objectB == objectA) continue;
+
+                    Vector3 d_rad_A = objectB.transform.position - objectA.transform.position;//Радиус вектор для объект_А в точку объект_B
+                    float pow_2_rad = Mathf.Pow(d_rad_A.magnitude, 2);//квадрат расстояния между точками
+
+                    if (pow_2_rad <= Data.SpaceObject.min_rad) pow_2_rad = Data.SpaceObject.min_rad;
+
+                    objectA.Acceleration = (objectB.Gm / pow_2_rad) * d_rad_A.normalized;//Вектор ускорения [a] = (G*mass другого объекта / радиус квадрат)* единичное направление вектора
+                }
+            }
+
+            foreach (var obj in spaceObjects)
+                obj.Positionize();
+        }
     }
 }
+
