@@ -37,7 +37,7 @@ namespace Objects.Data
 
         #region Position events
         /// <summary>
-        /// при установке сразу изменяет вектор скорости (предопеределен Controller.step_time)
+        /// при установке сразу изменяет вектор скорости (предопеределен SpaceController.step_time)
         /// </summary>
         public Vector3 Acceleration
         {
@@ -48,15 +48,15 @@ namespace Objects.Data
             set
             {
                 a = value;
-                v += a * Control.Controller.step_time;
+                v += a * Control.SpaceController.step_time;
             }
         }
         /// <summary>
-        /// Устанавливает координату (предопеределен Controller.step_time)
+        /// Устанавливает координату (предопеределен SpaceController.step_time)
         /// </summary>
         public void Positionize()
         {
-            transform.position += v * Control.Controller.step_time;
+            transform.position += v * Control.SpaceController.step_time;
         }
         #endregion
 
@@ -86,6 +86,7 @@ namespace Objects.Data
             Gm = settings.Gm;
             transform.position = settings.pos;
             v = settings.v;
+            a = Vector3.zero;
         }
 
     }

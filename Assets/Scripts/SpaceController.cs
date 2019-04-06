@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Objects.Control
 {
-    public class Controller : MonoBehaviour
+    public class SpaceController : MonoBehaviour
     {
-        public static Controller Instance;
+        public static SpaceController Instance;
 
         public const float step_time = 0.02f;
 
@@ -15,7 +15,7 @@ namespace Objects.Control
 
         private void Awake()
         {
-            Time.timeScale = 20;
+            Time.timeScale = 10;
             Instance = this;
         }
 
@@ -43,6 +43,13 @@ namespace Objects.Control
 
             foreach (var obj in spaceObjects)
                 obj.Positionize();
+        }
+
+        public void Restart()
+        {
+            CancelInvoke("Step");
+            foreach (var obj in spaceObjects) obj.Load();
+            InvokeRepeating("Step", step_time, step_time);
         }
     }
 }
