@@ -8,15 +8,14 @@ namespace Objects.Control
     {
         public static Controller Instance;
 
-        public const float step_time = 0.1f;
+        public const float step_time = 0.02f;
 
         public List<Data.SpaceObject> spaceObjects;
 
 
-        // Start is called before the first frame update
         private void Awake()
         {
-            Time.timeScale = 5;
+            Time.timeScale = 20;
             Instance = this;
         }
 
