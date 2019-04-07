@@ -5515,7 +5515,7 @@ GameObject:
   - component: {fileID: 479068772}
   - component: {fileID: 479068770}
   - component: {fileID: 479068771}
-  m_Layer: 1
+  m_Layer: 0
   m_Name: Sun_txr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
