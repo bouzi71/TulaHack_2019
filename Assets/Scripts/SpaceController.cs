@@ -53,12 +53,37 @@ namespace Objects.Control
 
             foreach (var obj in spaceObjects)
                 obj.Load();
+
+            ClearAllMeterors();
             ClearAllTrails();
 
             InvokeRepeating("Step", step_time, step_time);
         }
 
 
+
+        //
+        // Удаление всех метеоритов
+        //
+        public void ClearAllMeterors()
+        {
+            GameObject[] meteorits = GameObject.FindGameObjectsWithTag(Objects.Control.Create.ObjectCreator.cMeteoritObjectName);
+            if (meteorits.Length == 0)
+                return;
+
+            // Destroy from scene
+            List<GameObject> meteoritsAsEnum = new List<GameObject>(meteorits);
+            foreach (var meterorit in meteoritsAsEnum)
+            {
+                Data.SpaceObject meteoritAsSpaceObject = meterorit.GetComponent<Data.SpaceObject>();
+                if (meteoritAsSpaceObject != null)
+                {
+                    if (spaceObjects.Contains(meteoritAsSpaceObject))
+                        spaceObjects.Remove(meteoritAsSpaceObject);
+                }
+                DestroyImmediate(meterorit, false);
+            }
+        }
 
 
         //
@@ -68,7 +93,11 @@ namespace Objects.Control
         {
             foreach (var obj in spaceObjects)
             {
-                obj.GetComponentInChildren<TrailRenderer>().Clear();
+                TrailRenderer trailRenderer = obj.GetComponentInChildren<TrailRenderer>();
+                if (trailRenderer == null)
+                    continue;
+
+                trailRenderer.Clear();
             }
         }
     }

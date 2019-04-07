@@ -6,6 +6,8 @@ namespace Objects.Data
 {
     public class SpaceObject : MonoBehaviour
     {
+        public enum ObjectType {Meteor = 0, Asteroid, BlackHole}
+
         //public static float G = 6.67f * Mathf.Pow(10, -11);//[(Н * м^2) / (кг^2)]
         public static float G = 6.67e-11f;//[(Н * м^2) / (кг^2)]
         public static float G_km = 6.66e-5f;//[(Н * км^2) / (кг^2)]

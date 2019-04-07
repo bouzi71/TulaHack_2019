@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Extensions;
 
 namespace GamePlay
 {
@@ -141,6 +142,7 @@ namespace GamePlay
         }
         private void Invoke_OnExper()
         {
+            ChangeObjectType();
             StartCoroutine(exper_colorController.Enable(t_ienumerate_game / 2));
         }
         #endregion
@@ -155,6 +157,23 @@ namespace GamePlay
         #endregion
 
         #region Experiment
+        //[SerializeField]
+        //private Objects.Control.Create.ObjectCreator creator;
+        [Header("Experiment")]
+        [SerializeField]
+        private Slider sl_mass;
+        [SerializeField]
+        private Slider sl_speed;
+        [SerializeField]
+        private Text text;
+
+        [SerializeField]
+        private float min_mass;
+        [SerializeField]
+        private float max_mass;
+        [SerializeField]
+        private float max_speed;
+
         public void OnBackFromExper()
         {
             StartCoroutine(exper_colorController.Disable(t_ienumerate_game / 2));
@@ -166,7 +185,71 @@ namespace GamePlay
             OnBackFromExper();
         }
 
+        public void OnSpeedChange(Slider slider)
+        {
+            Objects.Control.Create.ObjectCreator.Instance.speed = slider.value;
+        }
+        public void OnMassChange(Slider slider)
+        {
+            float value = 0;
+            Objects.Control.Create.ObjectCreator.Instance.mass = value.SinLerp(min_mass, max_mass, slider.value);
+        }
+
+        private Objects.Data.SpaceObject.ObjectType _t = Objects.Data.SpaceObject.ObjectType.Meteor;
+        public void ChangeObjectType()
+        {
+            string txt = "";
+
+            _t = (Objects.Data.SpaceObject.ObjectType)((int)++_t % 3);
+            switch (_t)
+            {
+                case Objects.Data.SpaceObject.ObjectType.Meteor:
+                    {
+                        txt = "ЗАПУСТИ МЕТЕОРИТ!";
+                        min_mass = 0.05f;
+                        max_mass = 10.0f;
+                        break;
+                    }
+                case Objects.Data.SpaceObject.ObjectType.Asteroid:
+                    {
+                        txt = "ЗАПУСТИ АСТЕРОИД!";
+                        min_mass = 10.0f;
+                        max_mass = 30.0f;
+                        break;
+                    }
+                case Objects.Data.SpaceObject.ObjectType.BlackHole:
+                    {
+                        txt = "ЗАПУСТИ ЧЕРНУЮ ДЫРУ!";
+                        min_mass = 1000;
+                        max_mass = 1e+8f;
+                        break;
+                    }
+                default: break;
+            }
+
+            text.text = txt;
+
+            sl_mass.minValue = min_mass;
+            sl_mass.maxValue = max_mass;
+            sl_mass.value = min_mass;
+
+
+            OnSpeedChange(sl_speed);
+            OnMassChange(sl_mass);
+        }
+
         #endregion
+    }
+}
+
+namespace Extensions
+{
+    public static class flaotExtensions
+    {
+        public static float SinLerp(this float value, float min, float max, float ct)
+        {
+            return min+Mathf.Sin(ct) * (max-min);
+        }
     }
 }
 
