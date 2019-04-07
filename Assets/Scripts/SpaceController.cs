@@ -50,8 +50,26 @@ namespace Objects.Control
         public void Restart()
         {
             CancelInvoke("Step");
-            foreach (var obj in spaceObjects) obj.Load();
+
+            foreach (var obj in spaceObjects)
+                obj.Load();
+            ClearAllTrails();
+
             InvokeRepeating("Step", step_time, step_time);
+        }
+
+
+
+
+        //
+        // Очистка всех трейлов.
+        //
+        public void ClearAllTrails()
+        {
+            foreach (var obj in spaceObjects)
+            {
+                obj.GetComponentInChildren<TrailRenderer>().Clear();
+            }
         }
     }
 }
