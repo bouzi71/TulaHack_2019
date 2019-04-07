@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlotonTrail
+  m_Name: PlutonTrail
   m_Shader: {fileID: 10763, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -85,5 +85,5 @@ Material:
     - _UseUIAlphaClip: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 0.7508845, b: 0.6933962, a: 0.6156863}
+    - _Color: {r: 0.990566, g: 0.9083189, b: 0.7989943, a: 0.6156863}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
