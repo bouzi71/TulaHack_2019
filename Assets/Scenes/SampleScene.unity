@@ -1491,7 +1491,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 637028201}
+  - {fileID: 1956111130}
   - {fileID: 1570438997}
   - {fileID: 742654957}
   - {fileID: 2112112510}
@@ -4547,7 +4547,7 @@ GameObject:
   - component: {fileID: 357157406}
   - component: {fileID: 357157404}
   m_Layer: 0
-  m_Name: Jupiter
+  m_Name: Jupiter_txr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7087,7 +7087,7 @@ GameObject:
   - component: {fileID: 622874766}
   - component: {fileID: 622874764}
   m_Layer: 0
-  m_Name: Pluto
+  m_Name: Pluto_txr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7391,7 +7391,7 @@ GameObject:
   - component: {fileID: 637028203}
   - component: {fileID: 637028202}
   m_Layer: 5
-  m_Name: Name (1)
+  m_Name: UI_TulaHack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7407,11 +7407,8 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1558974886}
-  - {fileID: 1583555105}
-  - {fileID: 2098467474}
-  m_Father: {fileID: 146639551}
+  m_Children: []
+  m_Father: {fileID: 1956111130}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -11553,7 +11550,7 @@ GameObject:
   - component: {fileID: 855570668}
   - component: {fileID: 855570666}
   m_Layer: 0
-  m_Name: Saturn
+  m_Name: Saturn_txr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25502,7 +25499,7 @@ GameObject:
   - component: {fileID: 1558974888}
   - component: {fileID: 1558974887}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: UI_CreatedBy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25519,12 +25516,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 637028201}
-  m_RootOrder: 0
+  m_Father: {fileID: 1956111130}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -369, y: 0}
+  m_AnchoredPosition: {x: 184.30005, y: 336.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1558974887
@@ -25988,7 +25985,7 @@ GameObject:
   - component: {fileID: 1583555107}
   - component: {fileID: 1583555106}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: UI_ComandName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26005,12 +26002,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 637028201}
-  m_RootOrder: 1
+  m_Father: {fileID: 1956111130}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -159.59999, y: 0}
+  m_AnchoredPosition: {x: 393.70007, y: 336.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1583555106
@@ -29812,7 +29809,7 @@ GameObject:
   - component: {fileID: 1886659854}
   - component: {fileID: 1886659852}
   m_Layer: 0
-  m_Name: Uranus
+  m_Name: Uranus_txr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31149,6 +31146,84 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952105709}
   m_Mesh: {fileID: 4300004, guid: 259f73d728706c5478c937a9101d293c, type: 3}
+--- !u!1 &1956111129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1956111130}
+  - component: {fileID: 1956111132}
+  - component: {fileID: 1956111131}
+  m_Layer: 5
+  m_Name: UI_Copyright
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1956111130
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956111129}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 637028201}
+  - {fileID: 1558974886}
+  - {fileID: 1583555105}
+  - {fileID: 2098467474}
+  m_Father: {fileID: 146639551}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1956111131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956111129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1956111132
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956111129}
+  m_CullTransparentMesh: 0
 --- !u!1 &1962143966
 GameObject:
   m_ObjectHideFlags: 0
@@ -32098,7 +32173,7 @@ GameObject:
   - component: {fileID: 2035834076}
   - component: {fileID: 2035834074}
   m_Layer: 0
-  m_Name: Neptune
+  m_Name: Neptune_txr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32482,7 +32557,7 @@ GameObject:
   - component: {fileID: 2098467476}
   - component: {fileID: 2098467475}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: UI_In
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32499,12 +32574,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 637028201}
-  m_RootOrder: 2
+  m_Father: {fileID: 1956111130}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -108.999985, y: 0}
+  m_AnchoredPosition: {x: 444.30005, y: 336.00003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2098467475
