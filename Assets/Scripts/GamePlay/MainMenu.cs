@@ -241,9 +241,9 @@ namespace GamePlay
 
             text.text = txt;
 
-            sl_mass.minValue = min_mass;
-            sl_mass.maxValue = max_mass;
-            sl_mass.value = min_mass;
+            //sl_mass.minValue = min_mass;
+            //sl_mass.maxValue = max_mass;
+            //sl_mass.value = min_mass;
 
 
             OnSpeedChange(sl_speed);
