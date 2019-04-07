@@ -151,8 +151,20 @@ namespace GamePlay
         #region Learn
         public void OnBackMainScene()
         {
-            StartCoroutine(learn_colorController.Disable(t_ienumerate_game / 2));
-            Invoke("Invoke_OnStart", t_invoke_delay);
+            if (Objects.Visual.CanvasCatcher.Instance.detail)
+            {
+                Objects.Visual.CanvasCatcher.Instance.BaseCamera();
+            }
+            else
+            {
+                StartCoroutine(learn_colorController.Disable(t_ienumerate_game / 2));
+                Invoke("Invoke_OnStart", t_invoke_delay);
+            }
+        }
+
+        public void CathCanvas(Transform _parent)
+        {
+            Objects.Visual.CanvasCatcher.Instance.SetCamera(_parent);
         }
         #endregion
 
