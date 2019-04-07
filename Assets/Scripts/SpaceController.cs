@@ -21,6 +21,8 @@ namespace Objects.Control
 
         void Start()
         {
+            foreach (var obj in spaceObjects) obj.Create();
+
             InvokeRepeating("Step", step_time, step_time);
         }
 

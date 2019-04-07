@@ -28,6 +28,8 @@ namespace GamePlay
         private ColorController load_colorController;
         [SerializeField]
         private ColorController learn_colorController;
+        [SerializeField]
+        private ColorController exper_colorController;
 
         public float t_ienumerate_game;
         public float t_invoke_delay;
@@ -43,6 +45,7 @@ namespace GamePlay
             load_colorController.Enable();
             mainscene_colorController.Disable();
             learn_colorController.Disable();
+            exper_colorController.Disable();
         }
 
         #endregion
@@ -128,6 +131,19 @@ namespace GamePlay
             Objects.Control.SpaceController.Instance.Restart();
         }
         #endregion
+
+        #region OnExper
+        public void OnExperBtnPress()
+        {
+            StartCoroutine(mainscene_colorController.Disable(t_ienumerate_game / 2));
+            //StartCoroutine(IBackMenu(cameraPositions.Find(el => el.key == "OnLoad")));
+            Invoke("Invoke_OnExper", t_invoke_delay);
+        }
+        private void Invoke_OnExper()
+        {
+            StartCoroutine(exper_colorController.Enable(t_ienumerate_game / 2));
+        }
+        #endregion
         #endregion
 
         #region Learn
@@ -136,6 +152,20 @@ namespace GamePlay
             StartCoroutine(learn_colorController.Disable(t_ienumerate_game / 2));
             Invoke("Invoke_OnStart", t_invoke_delay);
         }
+        #endregion
+
+        #region Experiment
+        public void OnBackFromExper()
+        {
+            StartCoroutine(exper_colorController.Disable(t_ienumerate_game / 2));
+            Invoke("Invoke_OnStart", t_invoke_delay);
+        }
+        public void CreateNewObject()
+        {
+            Objects.Control.Create.ObjectCreator.Instance.Create();
+            OnBackFromExper();
+        }
+
         #endregion
     }
 }

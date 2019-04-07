@@ -25,12 +25,12 @@ namespace Objects.Data
         [HideInInspector]
         public float Gm;
 
-        private void Start()
-        {
-            G_mass_override(G_km * k_mass * ParserData.Instance.base_mass);
-            v = new Vector3(v.x * ParserData.Instance.k_speed.x, v.y * ParserData.Instance.k_speed.y, v.z * ParserData.Instance.k_speed.z);
-            Save();
-        }
+        //private void Start()
+        //{
+        //    G_mass_override(G_km * k_mass * ParserData.Instance.base_mass);
+        //    v = new Vector3(v.x * ParserData.Instance.k_speed.x, v.y * ParserData.Instance.k_speed.y, v.z * ParserData.Instance.k_speed.z);
+        //    Save();
+        //}
 
 
 
@@ -75,6 +75,13 @@ namespace Objects.Data
             public Vector3 v;
         }
         private Settings settings;
+
+        public void Create()
+        {
+            G_mass_override(G_km * k_mass * ParserData.Instance.base_mass);
+            v = new Vector3(v.x * ParserData.Instance.k_speed.x, v.y * ParserData.Instance.k_speed.y, v.z * ParserData.Instance.k_speed.z);
+            Save();
+        }
 
         public void Save()
         {
